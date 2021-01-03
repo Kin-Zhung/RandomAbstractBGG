@@ -1,0 +1,45 @@
+<div class="scrollable">
+
+      <label>Border:</label>
+      <br>
+      <mat-radio-group
+      aria-label="border option"
+      [(ngModel)] ="border"
+      (ngModelChange) = "changeBorder()">
+        <mat-radio-button [value]="true">Yes</mat-radio-button>
+        <mat-radio-button [value]="false">No</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <br>
+      <label>Fill:</label>
+      <br>
+      <mat-radio-group
+      aria-label="fill option"
+      [(ngModel)] ="fill"
+      (ngModelChange) = "changeFill()">
+        <mat-radio-button [value]="true">yes</mat-radio-button>
+        <mat-radio-button [value]="false">no</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <br>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Number of circles</mat-label>
+        <input matInput placeholder="number of rectangles" type="number" [(ngModel)] = "numCircle" (ngModelChange) = "changeNumCir()" min="0" required [formControl]="fNumCirc">
+        <mat-error >Number of circles cannot be less then 0</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Minimum radius</mat-label>
+        <input matInput placeholder="minimum radius" type="number" [(ngModel)] = "minRad" (ngModelChange) = "changeMinRad()" min="1" required [formControl]="fMinRad">
+        <mat-error >line radius cannot be less then 1</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Maximum radius</mat-label>
+        <input matInput placeholder="max radius" type="number" [(ngModel)] = "maxRad" (ngModelChange) = "changeMaxRad()" min="1" required [formControl]="fMaxRad">
+        <mat-error >line Width cannot be less then 1</mat-error>
+      </mat-form-field>
+
+      <!-- <button mat-raised-button color="primary" (click)="saveCircle()">Save</button> -->
+
+
+  </div>

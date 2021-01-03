@@ -1,0 +1,75 @@
+
+<div class="grid-container">
+  <div class="controls">
+  <mat-card >
+    <h1>Options</h1>
+    <mat-form-field appearance="outline">
+      <mat-label>Options</mat-label>
+      <mat-select [(ngModel)]="selectedOption" name="options">
+        <mat-option value="general">General</mat-option>
+        <mat-option value="rectangle">Rectangle</mat-option>
+        <mat-option value="square">Square</mat-option>
+        <mat-option value="triangle">Triangle</mat-option>
+        <mat-option value="circle">Circle</mat-option>
+        <!-- <mat-option value="lines">Lines</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+    <div [ngSwitch]="selectedOption" class="selectedOption">
+      <div *ngSwitchCase ="'general'" class = "scrollable">
+        <app-general
+          [ctx] = "drawer"
+          (ctxComposit)="changeComposite($event)"
+          (ctxLineWidth)="changeLineWidth($event)"></app-general>
+      </div>
+      <div *ngSwitchCase ="'rectangle'" class = "scrollable">
+        <app-rectangle></app-rectangle>
+      </div>
+      <div *ngSwitchCase ="'square'" class = "scrollable">
+        <app-square></app-square>
+      </div>
+      <div *ngSwitchCase ="'triangle'" class = "scrollable">
+        <app-triangle></app-triangle>
+      </div>
+      <div *ngSwitchCase ="'circle'" class = "scrollable">
+        <app-circle></app-circle>
+      </div>
+      <div *ngSwitchCase ="'lines'" class = "scrollable">
+        lines
+      </div>
+      <div *ngSwitchDefault>
+        Error
+      </div>
+
+    </div>
+  </mat-card>
+</div>
+  <div class="canvas-area">
+    <div #cardcontainer class="container">
+      <mat-card>
+        <mat-card-content>
+          <canvas #canvas  ></canvas>
+          <div class="genControl">
+            <button mat-stroked-button color="basic" (click)="saveImg()">save current image</button>
+            <button mat-stroked-button color="basic" (click)="loadImg()">load last saved image</button>
+            <!-- <a #download href= {{dHref}} (click) = "download()" download="download">Download</a> -->
+            <button mat-stroked-button color="basic" (click)="download()">download</button>
+          </div>
+          <br>
+          <div class ="genControl">
+            <H2> Generate:</H2>
+            <button mat-stroked-button color="basic" (click)="gradBG()">gradient background</button>
+            <button mat-stroked-button color="basic" (click)="solidBG()">solid background</button>
+            <button mat-stroked-button color="basic" (click)="genRect()">Rectangle</button>
+            <button mat-stroked-button color="basic" (click)="genSquare()">square</button>
+            <button mat-stroked-button color="basic" (click)="genCircle()">circle</button>
+            <button mat-stroked-button color="basic" (click)="genTriangle()">Triangle</button>
+            <button mat-stroked-button color="basic" (click)="clear()">Clear</button>
+          </div>
+        </mat-card-content>
+
+      </mat-card>
+      </div>
+
+  </div>
+
+</div>

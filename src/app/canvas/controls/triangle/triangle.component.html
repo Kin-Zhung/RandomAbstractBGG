@@ -1,0 +1,69 @@
+<div class="scrollable">
+  <mat-card>
+
+    <mat-card-content>
+      <label>Border:</label>
+      <br>
+      <mat-radio-group
+      aria-label="border option"
+      [(ngModel)] ="border"
+      (ngModelChange) = "changeBorder()">
+        <mat-radio-button [value]="true">Yes</mat-radio-button>
+        <mat-radio-button [value]="false">No</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <br>
+      <label>Fill:</label>
+      <br>
+      <mat-radio-group
+      aria-label="fill option"
+      [(ngModel)] ="fill"
+      (ngModelChange) = "changeFill()">
+        <mat-radio-button [value]="true">yes</mat-radio-button>
+        <mat-radio-button [value]="false">no</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <br>
+      <label>Rotation:</label>
+      <br>
+      <mat-radio-group
+      aria-label="rotation option"
+      [(ngModel)] ="rotation"
+      (ngModelChange) = "changeRotation()">
+        <mat-radio-button [value]="true">yes</mat-radio-button>
+        <mat-radio-button [value]="false">no</mat-radio-button>
+      </mat-radio-group>
+      <br>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Number of Triangles</mat-label>
+        <input matInput placeholder="number of rectangles" type="number" [(ngModel)] = "numTri" (ngModelChange) = "changeNumTri()" required min="0" [formControl] ="fNumT">
+        <mat-error >Number of Triangle has to be greater or equal to 0</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Minimum width</mat-label>
+        <input matInput placeholder="minimum width" type="number" [(ngModel)] = "minWidth" (ngModelChange) = "changeMinWidth()" required min="1" [formControl] = "fMinW">
+        <mat-error >Minium Width has to be greater then 1</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Minimum height</mat-label>
+        <input matInput placeholder="min height" type="number" [(ngModel)] = "minHeight" (ngModelChange) = "changeMinHeight()" required min="1" [formControl] = "fMinH">
+        <mat-error >Minium height has to be greater then 1</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Maximum width</mat-label>
+        <input matInput placeholder="max width" type="number" [(ngModel)] = "maxWidth" (ngModelChange) = "changeMaxWidth()"  required min="1" [formControl] = "fMaxW">
+        <mat-error >Maxium height has to be greater then 1</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Maximum height</mat-label>
+        <input matInput placeholder="max height" type="number" [(ngModel)] = "maxHeight"(ngModelChange) = "changeMaxHeight()" required min="1" [formControl] = "fMaxH">
+        <mat-error >Maxium height has to be greater then 1</mat-error>
+      </mat-form-field>
+      <!-- <button mat-raised-button color="primary" (click)="saveTri()">Save</button> -->
+
+
+    </mat-card-content>
+
+  </mat-card>
+  </div>

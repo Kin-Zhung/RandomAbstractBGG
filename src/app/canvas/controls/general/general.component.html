@@ -1,0 +1,35 @@
+<div class="scrollable">
+  <h5>Auto Load last saved image</h5>
+    <mat-radio-group
+    aria-label="autoLoad"
+    [(ngModel)] ="autoLoad"
+    (ngModelChange) = "changeAutoLoad()">
+      <mat-radio-button [value]="true">Yes</mat-radio-button>
+      <mat-radio-button [value]="false">No</mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <br>
+    <h5>Image Composition:</h5>
+    <mat-form-field appearance="outline">
+      <mat-label>Image Stacking options</mat-label>
+      <mat-select [(ngModel)]="canvasComposite" (selectionChange)="compositeChange()" >
+        <mat-option value="source-over">source-over</mat-option>
+        <mat-option value="difference">difference</mat-option>
+        <mat-option value="overlay">overlay</mat-option>
+        <mat-option value="multiply">multiply</mat-option>
+        <mat-option value="darken">darken</mat-option>
+        <mat-option value="lighten">lighten</mat-option>
+        <mat-option value="luminosity">luminosity</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <h5>Width of line / borders</h5>
+    <mat-form-field appearance='outline'>
+      <mat-label>Line width</mat-label>
+      <input matInput placeholder="width of line" type="number" [(ngModel)] = "lineWidth" (ngModelChange)="lineWidthChange()" min="1" required [formControl]="lwVal">
+      <mat-error >line Width cannot be less then 0</mat-error>
+    </mat-form-field>
+    <h5>Line/Border color</h5>
+    <app-color-picker  [cColor] = "bColor" (borderColor)="bColorChange($event)" ></app-color-picker>
+
+</div>
