@@ -5,4 +5,4 @@ Generates gradient backround, solid background, and common shapes such as rectan
 
 Here are some examples!
 
-![img1](src/assets/filename img1.png)
+![](src/assets/filename img1.png)
