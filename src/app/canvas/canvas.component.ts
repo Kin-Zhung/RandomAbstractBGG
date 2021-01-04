@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit, HostListener } from '@angular/core';
 import { Drawer } from './drawer';
 import {MatAccordion} from '@angular/material/expansion';
 import { CanvasService } from './canvas.service';
@@ -11,6 +11,7 @@ import { SquareService } from './controls/square/square.service';
 import { CircleService } from './controls/circle/circle.service';
 import { GeneralService } from './controls/general/general.service';
 import { RandGenService } from 'src/models/generator.service';
+import { OVERLAY_KEYBOARD_DISPATCHER_PROVIDER_FACTORY } from '@angular/cdk/overlay/keyboard/overlay-keyboard-dispatcher';
 
 
 
@@ -22,14 +23,56 @@ import { RandGenService } from 'src/models/generator.service';
 })
 export class CanvasComponent implements OnInit {
   constructor( private canvasService: CanvasService, private rectService: RectangleService,private squareService:SquareService,private triangleService:TriangleService,private circleService:CircleService,private randService:RandGenService,) { }
-  @ViewChild(MatAccordion) accordion: MatAccordion;
-  @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
-  @ViewChild('download') link: ElementRef<HTMLLinkElement>
+
   ctx: CanvasRenderingContext2D;
   selectedOption:String;
   public drawer;
   public imgdata;
   dHref:String ="";
+
+  @ViewChild(MatAccordion) accordion: MatAccordion;
+  @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
+  @ViewChild('download') link: ElementRef<HTMLLinkElement>
+
+  @HostListener('window:keyup',['$event']) keyEvent(event:KeyboardEvent){
+    switch(event.key){
+      case 'q':
+        this.gradBG();
+        break;
+      case 'w':
+        this.solidBG();
+        break;
+      case '1':
+        this.saveImg();
+        break;
+      case '2':
+        this.loadImg();
+        break;
+      case 'r':
+        this.genRect();
+        break;
+      case 's':
+        this.genSquare();
+        break;
+      case 't':
+        this.genTriangle();
+        break;
+      case 'c':
+        this.genCircle();
+        break;
+      case '3':
+        this.clear();
+        return;
+      default:
+        return;
+
+    }
+    // if(event.key === 'q'){
+    //   this.gradBG();
+    // }else if (event.key ==='1'){
+    //   this.saveImg();
+    // }
+  }
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d');
     this.canvasService.setCtx(this.canvas.nativeElement.getContext('2d'));
